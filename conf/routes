@@ -1,0 +1,15 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET        /                                              controllers.Application.index
+
+GET        /politicians                                   controllers.Politicians.list
+GET        /politicians/:id                               controllers.Politicians.show(id: Long)
+GET        /politicians/constituency/:constituency        controllers.Politicians.showConstituency(constituency: String)
+GET        /politicians/party/:party                      controllers.Politicians.showParty(party: String)
+GET        /portrait/:id                                  controllers.Portrait.portrait(id: Long)
+
+# Map static resources from the /public folder to the /assets URL path
+GET        /assets/*file                                  controllers.Assets.at(path="/public", file)

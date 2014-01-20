@@ -1,0 +1,21 @@
+@(politicians: List[Politician])(implicit lang:Lang)
+
+@main(Messages("application.name")){
+    <dl class="politicians">
+        @for(politician <- politicians){
+            <dt>
+                <a href="@controllers.routes.Politicians.show(politician.id)">
+                    @politician.firstname @politician.lastname
+                </a>
+            </dt>
+            <dd>
+                <a href="@controllers.routes.Politicians.showConstituency(politician.constituency)">
+                    @politician.constituency
+                </a>,
+                <a href="@controllers.routes.Politicians.showParty(politician.party)">
+                    @politician.party
+                </a>
+            </dd>
+        }
+    </dl>
+}

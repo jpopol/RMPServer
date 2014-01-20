@@ -1,0 +1,16 @@
+@(politician:Politician)
+
+<div class="politician">
+    <h2>
+        @tags.portrait(politician.id)
+        @Messages("politican.name", politician.firstname, politician.lastname)
+    </h2>
+
+    <dl class="dl-horizontal">
+        <dt>@Messages("party"):</dt>
+        <dd>@politician.party</dd>
+
+        <dt>@Messages("constituency"):</dt>
+        <dd>@politician.constituency</dd>
+    </dl>
+</div>

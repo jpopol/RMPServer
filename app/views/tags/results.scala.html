@@ -1,0 +1,7 @@
+@(politicians: Set[Politician], query: String)
+
+@main("Search result: " + query ){
+    @for(politician <- politicians){
+        @tags.details(politician)
+    }
+}

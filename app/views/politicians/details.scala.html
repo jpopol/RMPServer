@@ -1,0 +1,5 @@
+@(politician: Politician)(implicit lang: Lang)
+
+@main(Messages("politican.name", politician.firstname, politician.lastname)){
+   @tags.details(politician)
+}

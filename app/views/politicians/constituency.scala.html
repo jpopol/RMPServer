@@ -1,0 +1,3 @@
+@(politicians: Set[Politician])(implicit lang: Lang)
+
+@tags.results(politicians, "constituency = " + politicians.head.constituency)
