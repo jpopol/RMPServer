@@ -1,6 +1,0 @@
-application.name = Rate my politician
-
-politican.name = Politician: {0} {1}
-
-party = Party
-constituency = Consistuency
