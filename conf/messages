@@ -4,3 +4,5 @@ politican.name = Politician: {0} {1}
 
 party = Party
 constituency = Constituency
+
+results = Search results

@@ -4,3 +4,5 @@ politican.name = Politicien: {0} {1}
 
 party = Parti politique
 constituency = Circonscription
+
+results = Résultats de la recherche

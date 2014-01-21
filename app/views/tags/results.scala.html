@@ -1,6 +1,6 @@
-@(politicians: Set[Politician], query: String)
+@(politicians: Set[Politician], query: String)(implicit lang:Lang)
 
-@main("Search result: " + query ){
+@main(Messages("results")+": " + query ){
     @for(politician <- politicians){
         @tags.details(politician)
     }
