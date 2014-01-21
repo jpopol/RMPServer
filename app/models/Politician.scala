@@ -12,15 +12,9 @@ case class Politician (
  )
 
 object Politician{
-  var politicians :Set[Politician] = Set()
-  /*  Politician(20,"Caoimhghín","Ó Caoláin","Sinn Fein","Cavan-Monaghan",new URL("http://www.kildarestreet.com/td/caoimhghin_o_caolain/cavan-monaghan")),
-    Politician(2,"Éamon","Ó Cuív","Fianna Fail","Galway West",new URL("http://www.kildarestreet.com/td/eamon_o_cuiv/galway_west")),
-    Politician(21,"Seán","Ó Fearghaíl","Fianna Fail","Kildare South",new URL("http://www.kildarestreet.com/td/sean_o_fearghail/kildare_south")),
-    Politician(322,"Aodhán","Ó Ríordáin","Labour","Dublin North Central",new URL("http://www.kildarestreet.com/td/aodhan_o_riordain/dublin_north_central"))
-  )*/
   val reader = CSVReader.open(Play.getExistingFile("public/resources/dail.csv").get)
   Logger.debug("reader : " + reader.toString)
-  politicians = reader.allWithHeaders().map { m =>
+  val politicians = reader.allWithHeaders().map { m =>
     Logger.debug(m.toString)
   //id,firstname,lastname,party,constituency,uri
     Politician(m.get("id").getOrElse("0").toLong,
