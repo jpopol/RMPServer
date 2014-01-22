@@ -4,7 +4,7 @@
     <dl class="politicians">
         @for(politician <- politicians){
             <dt>
-                <a href="@controllers.routes.Politicians.show(politician.id)">
+                <a href="@controllers.routes.Politicians.showPolitician(politician.id)">
                     @politician.firstname @politician.lastname
                 </a>
             </dt>

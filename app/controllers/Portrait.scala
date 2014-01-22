@@ -33,7 +33,7 @@ object Portrait extends Controller {
         byteArray = Stream.continually(in.read).takeWhile(-1 !=).map(_.toByte).toArray
 
       } catch {
-        case e: Exception => Logger.error(f"Can't find picture as $pictureType for id: $id", e)
+        case e: Exception => Logger.warn(f"Can't find picture as $pictureType for id: $id", e)
       } finally {
         if (in != null) in.close
       }
@@ -41,6 +41,6 @@ object Portrait extends Controller {
       byteArray
     }
 
-    fetch(id,"jpg").getOrElse(fetch(id,"png").get)
+    fetch(id,"jpg").getOrElse(fetch(id,"png").getOrElse{Logger.error(f"Can't find a picture for id: $id"); null})
   }
 }
