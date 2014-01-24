@@ -1,8 +1,9 @@
 application.name = Rate my politician
 
-politican.name = Politician: {0} {1}
+politician.name = {0} {1}
 
 party = Party
 constituency = Constituency
+politician = Politician
 
 results = Search results

@@ -1,33 +1,32 @@
 @(politicians: List[Politician])(implicit lang:Lang)
 
-    @main(Messages("application.name")){
-        <div class="politicians">
-        @for(politician <- politicians){
-            <div class="container-fluid">
-                <div class="row-fluid">
-                    <div class="span3">
-                        @tags.smallportrait(politician.id)
-                    </div>
-                    <div class="span9">
-                        <dl>
-                            <dt>
-                                <a href="@controllers.routes.Politicians.showPolitician(politician.id)">
-                                    @politician.firstname @politician.lastname
-                                </a>
-                            </dt>
-                            <dd>
-                                <a href="@controllers.routes.Politicians.showConstituency(politician.constituency)">
-                                    @politician.constituency
-                                </a>,
-                                <a href="@controllers.routes.Politicians.showParty(politician.party)">
-                                    @politician.party
-                                </a>
-                            </dd>
-                        </dl>
-                    </div>
+@main(Messages("application.name")){
+    <div class="politicians">
+    @for(politician <- politicians){
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-9 col-md-push-3">
+                    <dl>
+                        <dt>
+                            <a href="@controllers.routes.Politicians.showPolitician(politician.id)">
+                                @politician.firstname @politician.lastname
+                            </a>
+                        </dt>
+                        <dd>
+                            <a href="@controllers.routes.Politicians.showConstituency(politician.constituency)">
+                            @politician.constituency
+                            </a>,
+                            <a href="@controllers.routes.Politicians.showParty(politician.party)">
+                            @politician.party
+                            </a>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-md-3 col-md-pull-9">
+                    <img class="portrait" alt="@politician.id" src="@routes.Portrait.smallportrait(politician.id)">
                 </div>
             </div>
-
-        }
         </div>
     }
+    </div>
+}

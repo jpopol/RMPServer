@@ -1,8 +1,9 @@
 application.name = Evaluateur de politicien
 
-politican.name = Politicien: {0} {1}
+politician.name = {0} {1}
 
 party = Parti politique
 constituency = Circonscription
+politician = Politicien
 
 results = Résultats de la recherche

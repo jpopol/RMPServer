@@ -1,8 +1,9 @@
 application.name = Ocena polityka
 
-politican.name = Polityk: {0} {1}
+politician.name = {0} {1}
 
 party = Partia
 constituency = Okręg wyborczy
+politician = Polityk
 
 results = Search results (in polish)

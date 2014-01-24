@@ -1,16 +1,20 @@
 @(politician:Politician)(implicit lang: Lang)
 
-<div class="politician">
-    <h2>
-        @tags.portrait(politician.id)
-        @Messages("politican.name", politician.firstname, politician.lastname)
-    </h2>
+<div class="media politician">
+    <a class="pull-right" href="#">
+        <img class="media-object portrait" alt="@politician.id" src="@routes.Portrait.portrait(politician.id)">
+    </a>
+    <div class="media-body">
+        <h4 class="media-heading"></h4>
+        <dl class="dl-horizontal">
+            <dt>@Messages("politician"):</dt>
+            <dd>@Messages("politician.name", politician.firstname, politician.lastname)</dd>
 
-    <dl class="dl-horizontal">
-        <dt>@Messages("party"):</dt>
-        <dd>@politician.party</dd>
+            <dt>@Messages("party"):</dt>
+            <dd>@politician.party</dd>
 
-        <dt>@Messages("constituency"):</dt>
-        <dd>@politician.constituency</dd>
-    </dl>
+            <dt>@Messages("constituency"):</dt>
+            <dd>@politician.constituency</dd>
+        </dl>
+    </div>
 </div>

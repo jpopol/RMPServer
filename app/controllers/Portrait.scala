@@ -5,22 +5,20 @@ import play.api.mvc.{Controller, Action}
 import play.api.libs.concurrent.Akka
 import play.api.Play.current
 import play.Logger
+import scala.concurrent._
 
 object Portrait extends Controller {
   val MimeType = "image/jpg"
 
-  def portrait(id: Long) = Action {
-    val portraitPromise = Akka.future(download(id,"http://www.kildarestreet.com/images/mpsL"))
-    Async {
-      portraitPromise.map(p => Ok(p).as(MimeType))
-    }
+  def portrait(id: Long) = Action.async {
+    val portraitPromise = Future(download(id,"http://www.kildarestreet.com/images/mpsL"))
+    portraitPromise.map(p => Ok(p).as(MimeType))
   }
 
-  def smallportrait(id: Long) = Action {
-    val portraitPromise = Akka.future(download(id,"http://www.kildarestreet.com/images/mps"))
-    Async {
-      portraitPromise.map(p => Ok(p).as(MimeType))
-    }
+  def smallportrait(id: Long) = Action.async {
+    val portraitPromise = Future(download(id,"http://www.kildarestreet.com/images/mps"))
+    portraitPromise.map(p => Ok(p).as(MimeType))
+
   }
 
   def download(id: Long, baseURL: String) = {

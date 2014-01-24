@@ -9,6 +9,7 @@ object ApplicationBuild extends Build {
 
   val appDependencies = Seq(
     "com.github.tototoshi" %% "scala-csv" % "1.0.0-SNAPSHOT",
+    "org.webjars" %% "webjars-play" % "2.2.1",
     "org.webjars" % "bootstrap" % "3.0.3",
     "org.webjars" % "flat-ui" % "bcaf2de95e"
   )
