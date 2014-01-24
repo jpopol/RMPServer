@@ -7,16 +7,23 @@ import play.api.Play.current
 import play.Logger
 
 object Portrait extends Controller {
+  val MimeType = "image/jpg"
 
   def portrait(id: Long) = Action {
-    val MimeType = "image/jpg"
-    val portraitPromise = Akka.future(download(id))
+    val portraitPromise = Akka.future(download(id,"http://www.kildarestreet.com/images/mpsL"))
     Async {
       portraitPromise.map(p => Ok(p).as(MimeType))
     }
   }
 
-  def download(id: Long) = {
+  def smallportrait(id: Long) = Action {
+    val portraitPromise = Akka.future(download(id,"http://www.kildarestreet.com/images/mps"))
+    Async {
+      portraitPromise.map(p => Ok(p).as(MimeType))
+    }
+  }
+
+  def download(id: Long, baseURL: String) = {
     import java.net._
     import java.io._
 
@@ -25,7 +32,7 @@ object Portrait extends Controller {
 
     def fetch(id: Long, pictureType:String) = Option[Array[Byte]]{
       try {
-        val url = new URL(f"http://www.kildarestreet.com/images/mpsL/$id%s.$pictureType%s")
+        val url = new URL( baseURL + f"/$id%s.$pictureType%s")
 
         val connection = url.openConnection().asInstanceOf[HttpURLConnection]
         connection.setRequestMethod("GET")

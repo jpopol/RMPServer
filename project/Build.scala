@@ -1,5 +1,5 @@
 import sbt._
-import Keys._
+import sbt.Keys._
 import play.Project._
 
 object ApplicationBuild extends Build {
@@ -8,7 +8,9 @@ object ApplicationBuild extends Build {
   val appVersion      = "1.0-SNAPSHOT"
 
   val appDependencies = Seq(
-    "com.github.tototoshi" %% "scala-csv" % "1.0.0-SNAPSHOT"
+    "com.github.tototoshi" %% "scala-csv" % "1.0.0-SNAPSHOT",
+    "org.webjars" % "bootstrap" % "3.0.3",
+    "org.webjars" % "flat-ui" % "bcaf2de95e"
   )
 
   val main = play.Project(appName, appVersion, appDependencies).settings(

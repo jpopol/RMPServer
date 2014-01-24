@@ -3,21 +3,22 @@
 # ~~~~
 
 # Home page
-GET        /                                              controllers.Application.index
+GET        /                                                  controllers.Application.index
 
-GET        /politicians                                   controllers.Politicians.list
-GET        /politicians/:id                               controllers.Politicians.showPolitician(id: Long)
-GET        /politicians/constituency/:constituency        controllers.Politicians.showConstituency(constituency: String)
-GET        /politicians/party/:party                      controllers.Politicians.showParty(party: String)
+GET        /politicians                                       controllers.Politicians.list
+GET        /politicians/:id                                   controllers.Politicians.showPolitician(id: Long)
+GET        /politicians/constituency/:constituency            controllers.Politicians.showConstituency(constituency: String)
+GET        /politicians/party/:party                          controllers.Politicians.showParty(party: String)
 
-GET        /portrait/:id                                  controllers.Portrait.portrait(id: Long)
+GET        /portrait/:id                                      controllers.Portrait.portrait(id: Long)
+GET        /smallportrait/:id                                 controllers.Portrait.smallportrait(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
-GET        /assets/*file                                  controllers.Assets.at(path="/public", file)
+GET        /assets/*file                                      controllers.Assets.at(path="/public", file)
 
 
 #API
-GET        /api/politicians                               controllers.api.Politicians.list
-GET        /api/politicians/:id                           controllers.api.Politicians.showPolitician(id: Long)
-GET        /api/politicians/constituency/:constituency    controllers.api.Politicians.showConstituency(constituency: String)
-GET        /api/politicians/party/:party                  controllers.api.Politicians.showParty(party: String)
+GET        /api/politicians                                   controllers.api.Politicians.list
+GET        /api/politicians/:id                               controllers.api.Politicians.showPolitician(id: Long)
+GET        /api/politicians/constituency/:constituency        controllers.api.Politicians.showConstituency(constituency: String)
+GET        /api/politicians/party/:party                      controllers.api.Politicians.showParty(party: String)

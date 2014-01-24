@@ -1,21 +1,33 @@
 @(politicians: List[Politician])(implicit lang:Lang)
 
-@main(Messages("application.name")){
-    <dl class="politicians">
+    @main(Messages("application.name")){
+        <div class="politicians">
         @for(politician <- politicians){
-            <dt>
-                <a href="@controllers.routes.Politicians.showPolitician(politician.id)">
-                    @politician.firstname @politician.lastname
-                </a>
-            </dt>
-            <dd>
-                <a href="@controllers.routes.Politicians.showConstituency(politician.constituency)">
-                    @politician.constituency
-                </a>,
-                <a href="@controllers.routes.Politicians.showParty(politician.party)">
-                    @politician.party
-                </a>
-            </dd>
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span3">
+                        @tags.smallportrait(politician.id)
+                    </div>
+                    <div class="span9">
+                        <dl>
+                            <dt>
+                                <a href="@controllers.routes.Politicians.showPolitician(politician.id)">
+                                    @politician.firstname @politician.lastname
+                                </a>
+                            </dt>
+                            <dd>
+                                <a href="@controllers.routes.Politicians.showConstituency(politician.constituency)">
+                                    @politician.constituency
+                                </a>,
+                                <a href="@controllers.routes.Politicians.showParty(politician.party)">
+                                    @politician.party
+                                </a>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
         }
-    </dl>
-}
+        </div>
+    }
