@@ -2,7 +2,6 @@ package controllers
 
 import play.api.libs.concurrent.Execution.Implicits._
 import play.api.mvc.{Controller, Action}
-import play.api.libs.concurrent.Akka
 import play.api.Play.current
 import play.Logger
 import scala.concurrent._
@@ -15,7 +14,7 @@ object Portrait extends Controller {
     portraitPromise.map(p => Ok(p).as(MimeType))
   }
 
-  def smallportrait(id: Long) = Action.async {
+  def smallPortrait(id: Long) = Action.async {
     val portraitPromise = Future(download(id,"http://www.kildarestreet.com/images/mps"))
     portraitPromise.map(p => Ok(p).as(MimeType))
 

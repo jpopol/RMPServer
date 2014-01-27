@@ -1,0 +1,1 @@
+web: target/universal/stage/bin/retailos -Dhttp.port=${PORT} -DapplyEvolutions.default=true -DUSER=heroku
