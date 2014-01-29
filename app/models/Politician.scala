@@ -13,7 +13,7 @@ case class Politician (
  )
 
 object Politician{
-  val reader = CSVReader.open(Play.getExistingFile("public/resources/dail.csv").get)
+  val reader = CSVReader.open(Play.getExistingFile("public/dail.csv").get)
   Logger.debug("reader : " + reader.toString)
   val politicians = reader.allWithHeaders().map { m =>
     Logger.debug(m.toString)
