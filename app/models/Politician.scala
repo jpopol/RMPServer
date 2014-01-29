@@ -14,7 +14,6 @@ case class Politician (
 
 object Politician{
   val reader = CSVReader.open(Play.getExistingFile("/app/public/dail.csv ").get)
-  Play.
   Logger.debug("reader : " + reader.toString)
   val politicians = reader.allWithHeaders().map { m =>
     Logger.debug(m.toString)
