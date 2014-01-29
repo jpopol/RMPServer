@@ -5,13 +5,16 @@ import play.api.Play.current
 import play.api.Play
 import play.Logger
 import play.api.libs.json._
+import java.io.File
 
 
 case class Politician (
   id: Long, firstname: String, lastname: String, party: String, constituency:String, url: String
  )
 
-object Politician{
+object Politician {
+  Logger.info("absolute path:" + new File(".").getAbsolutePath())
+  Logger.info("user.dir" + System.getProperty("user.dir"))
   val reader = CSVReader.open(Play.getExistingFile("/app/public/dail.csv").get)
   Logger.debug("reader : " + reader.toString)
   val politicians = reader.allWithHeaders().map { m =>
