@@ -15,8 +15,9 @@ case class Politician (
 object Politician {
   Logger.error("absolute path:" + new File(".").getAbsolutePath())
   Logger.error("absolute path:" + new File("/app/public/dail.csv").getAbsolutePath())
+  Logger.error("exist: " + new File("/app/public/dail.csv").exists())
   Logger.error("user.dir" + System.getProperty("user.dir"))
-  val reader = CSVReader.open(System.getProperty("user.dir")+"/dail.csv")
+  val reader = CSVReader.open("/app/public/dail.csv")
 
   val politicians = reader.allWithHeaders().map { m =>
     Logger.debug(m.toString)
