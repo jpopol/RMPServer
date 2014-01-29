@@ -1,6 +1,5 @@
 package models
 
-import java.net.URL
 import com.github.tototoshi.csv.CSVReader
 import play.api.Play.current
 import play.api.Play
