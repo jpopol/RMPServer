@@ -8,7 +8,10 @@ object ApplicationBuild extends Build {
   val appVersion      = "1.0-SNAPSHOT"
 
   val appDependencies = Seq(
-    "com.github.tototoshi" %% "scala-csv" % "1.0.0-SNAPSHOT",
+    javaJdbc,
+    "com.typesafe.slick" %% "slick" % "2.0.0",
+    "org.slf4j" % "slf4j-nop" % "1.6.4",
+    "com.github.tototoshi" %% "scala-csv" % "1.0.0",
     "org.webjars" %% "webjars-play" % "2.2.1",
     "org.webjars" % "bootstrap" % "3.0.3",
     "org.webjars" % "flat-ui" % "bcaf2de95e"
