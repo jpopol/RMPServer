@@ -1,7 +1,7 @@
 package controllers
 
 import play.api.mvc.{Controller, Action}
-import controllers.dao.PoliticianDao
+import models.dao.PoliticianDao
 
 object Politicians extends Controller {
 

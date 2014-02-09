@@ -6,7 +6,7 @@ import play.api.libs.json.Json
 
 class Politicians(tag: Tag) extends Table[Politician](tag,"Politician") {
 
-  def id = column[Long]("ID", O.PrimaryKey)
+  def id = column[Long]("ID", O.PrimaryKey, O.NotNull)
   def firstname = column[String]("Firstname")
   def lastname = column[String]("Lastname")
   def party = column[String]("Party")
@@ -22,13 +22,5 @@ object Politician extends ((Long, String, String, String, String, String) => Pol
   implicit val politicianFmt = Json.format[Politician]
   Politician.tupled
 }
-
-//TODO: Remove
-/*
-def findall = politicians.toList.sortBy(_.id)
-def findById(id: Long) = politicians.find(_.id == id)
-def findByConstituency(constituency: String) = politicians.filter(_.constituency == constituency)
-def findByParty(party: String) = politicians.filter(_.party == party)
-*/
 
 

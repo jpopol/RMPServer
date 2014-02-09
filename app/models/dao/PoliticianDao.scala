@@ -1,4 +1,4 @@
-package controllers.dao
+package models.dao
 
 import scala.slick.lifted.TableQuery
 import models.{Politician, Politicians}
