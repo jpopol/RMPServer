@@ -1,13 +1,9 @@
 package controllers.api
 
 import play.api.mvc.{Action, Controller}
-import models.{Politicians, Politician}
 import play.api.libs.json._
 
-import scala.slick.driver.H2Driver.simple._
-import play.db.DB
 import controllers.dao.PoliticianDao
-
 
 object Politicians extends Controller {
   val MimeType = "application/json"
