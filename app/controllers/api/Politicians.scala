@@ -16,24 +16,24 @@ object Politicians extends Controller {
     Ok(Json.toJson(PoliticianDao.list())).as(MimeType)
   }
 
-  def showPolitician(id: Long) =TODO/* Action { implicit request =>
-    Politician.findById(id).map{ politician =>
-      Ok(Json.toJson(politician))as(MimeType)
-    }.getOrElse(NotFound)
-  }*/
+  def showPolitician(id: Long) = Action { implicit request =>
+    val politician = PoliticianDao.getById(id).head
+    Ok(Json.toJson(politician))as(MimeType)
 
-  def showConstituency(constituency: String) =TODO /*Action { implicit request =>
-    val politicians = Politician.findByConstituency(constituency)
+  }
+
+  def showConstituency(constituency: String) = Action { implicit request =>
+    val politicians = PoliticianDao.filterByConstituency(constituency)
     politicians match {
       case p:Set[_] => if (p.isEmpty) NotFound else Ok(Json.toJson(politicians))as(MimeType)
       case _ => NotFound
     }
-  }*/
+  }
 
-  def showParty(party: String) =TODO /*Action { implicit request =>
-    val politicians = Politician.findByParty(party)
+  def showParty(party: String) =Action { implicit request =>
+    val politicians = PoliticianDao.filterByParty(party)
     politicians match {
       case p:Set[_] => if (p.isEmpty) NotFound else  Ok(Json.toJson(politicians))as(MimeType)
     }
-  }*/
+  }
 }
