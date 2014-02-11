@@ -1,8 +1,8 @@
 import com.github.tototoshi.csv.CSVReader
 import models.{Politician, Politicians}
-import play.api.db.DB
 import play.api.{Mode, Play, GlobalSettings, Application}
 import play.Logger
+import models.RmpDb._
 
 // Use H2Driver to connect to an H2 database
 import scala.slick.driver.H2Driver.simple._
@@ -12,16 +12,15 @@ import scala.slick.driver.H2Driver.simple._
 import play.api.Play.current
 
 object Global extends GlobalSettings {
-  lazy val database = Database.forDataSource(DB.getDataSource())
   val politicians = TableQuery[Politicians]
 
   override def onStart(app: Application) {
+    super.onStart(app)
 
-    database.withSession {
+    database withSession {
       implicit session:Session =>
         Logger.debug("Creating tables")
         politicians.ddl.create
-        //TODO: Remove when on a real DB
 
         val reader = if(app.mode != Mode.Prod){
           CSVReader.open(Play.getExistingFile("public/dail.csv").get)
@@ -41,18 +40,16 @@ object Global extends GlobalSettings {
         }
 
     }
-    super.onStart(app)
   }
 
   override def onStop(app: Application): Unit = {
 
-    super.onStop(app)
-
-    database.withSession {
+    database withSession {
       implicit session:Session =>
-        Logger.debug("Droping tables")
+        Logger.debug("Dropping tables")
         politicians.ddl.drop
     }
+    super.onStop(app)
   }
 
 

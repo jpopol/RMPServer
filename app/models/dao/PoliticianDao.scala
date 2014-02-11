@@ -2,8 +2,8 @@ package models.dao
 
 import scala.slick.lifted.TableQuery
 import models.{Politician, Politicians}
-import play.api.db.DB
-import play.api.Play.current
+
+import models.RmpDb._
 
 // Use H2Driver to connect to an H2 database
 import scala.slick.driver.H2Driver.simple._
@@ -11,7 +11,6 @@ import scala.slick.driver.H2Driver.simple._
 //import Database.threadLocalSession
 
 object PoliticianDao {
-  private lazy val database = Database.forDataSource(DB.getDataSource())
   private val politicianQuery: TableQuery[Politicians] = TableQuery[Politicians]
 
   def list():Set[Politician] = {
