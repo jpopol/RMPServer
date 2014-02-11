@@ -38,7 +38,6 @@ object Global extends GlobalSettings {
             m.get("constituency").getOrElse(""),
             m.get("uri").getOrElse(""))
         }
-
     }
   }
 
