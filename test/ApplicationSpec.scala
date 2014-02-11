@@ -10,13 +10,13 @@ class  ApplicationSpec extends Specification {
   "Application" should {
 
     "send 404 on a bad request" in {
-      running(FakeApplication(additionalConfiguration = inMemoryDatabase())) {
+      running(FakeApplication()) {
         route(FakeRequest(GET, "/boum")) must beNone        
       }
     }
     
     "render the index page" in {
-      running(FakeApplication(additionalConfiguration = inMemoryDatabase())) {
+      running(FakeApplication()) {
         val home = route(FakeRequest(GET, "/")).get
 
         status(home) must equalTo(SEE_OTHER)

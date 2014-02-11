@@ -3,28 +3,26 @@
 @main(Messages("application.name")){
     <div class="politicians">
     @for(politician <- politicians){
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-9 col-md-push-3">
-                    <dl>
-                        <dt>
-                            <a href="@controllers.routes.Politicians.showPolitician(politician.id)">
-                                @politician.firstname @politician.lastname
-                            </a>
-                        </dt>
-                        <dd>
-                            <a href="@controllers.routes.Politicians.showConstituency(politician.constituency)">
-                            @politician.constituency
-                            </a>,
-                            <a href="@controllers.routes.Politicians.showParty(politician.party)">
-                            @politician.party
-                            </a>
-                        </dd>
-                    </dl>
-                </div>
-                <div class="col-md-3 col-md-pull-9">
-                    <img class="portrait" alt="@politician.id" src="@routes.Portrait.smallPortrait(politician.id)">
-                </div>
+        <div class="media">
+            <a class="pull-left" href="@controllers.routes.Politicians.showPolitician(politician.id)">
+                <img class="portrait" alt="@politician.id" src="@routes.Portrait.smallPortrait(politician.id)">
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading">
+                    <a href="@controllers.routes.Politicians.showPolitician(politician.id)">
+                        @politician.firstname @politician.lastname
+                    </a>
+                    @*<span class="badge badge-red">42+</span>*@
+                </h4>
+                <p>
+                    <a href="@controllers.routes.Politicians.showConstituency(politician.constituency)">
+                        @politician.constituency
+                    </a>
+                    <a href="@controllers.routes.Politicians.showParty(politician.party)">
+                        @politician.party
+                    </a>
+                </p>
+
             </div>
         </div>
     }
