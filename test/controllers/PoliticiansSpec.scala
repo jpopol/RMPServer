@@ -29,7 +29,7 @@ class PoliticiansSpec extends Specification {
         status(result) must equalTo(OK)
         contentType(result) must beSome("text/html")
         contentAsString(result) must contain("Independent")
-        contentAsString(result) must not contain("Sinn Fein") and not contain("Labour")
+        contentAsString(result) must not contain("Sinn Fein") and not contain("Labour") and contain("Independent")
 
       }
     }
