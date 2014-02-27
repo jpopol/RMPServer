@@ -19,8 +19,8 @@ object Global extends GlobalSettings {
 
     database withSession {
       implicit session:Session =>
-        Logger.debug("Creating tables")
-        politicians.ddl.create
+        //Logger.debug("Creating tables")
+        //politicians.ddl.create
 
         val reader = if(app.mode != Mode.Prod){
           CSVReader.open(Play.getExistingFile("public/dail.csv").get)
@@ -45,8 +45,8 @@ object Global extends GlobalSettings {
 
     database withSession {
       implicit session:Session =>
-        Logger.debug("Dropping tables")
-        politicians.ddl.drop
+        //Logger.debug("Dropping tables")
+        //politicians.ddl.drop
     }
     super.onStop(app)
   }
