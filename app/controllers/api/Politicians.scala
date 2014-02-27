@@ -2,8 +2,7 @@ package controllers.api
 
 import play.api.mvc.{Action, Controller}
 import play.api.libs.json._
-
-import models.dao.PoliticianDao
+import controllers.dao.PoliticianDao
 
 object Politicians extends Controller {
   val MimeType = "application/json"

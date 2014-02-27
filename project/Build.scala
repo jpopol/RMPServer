@@ -11,6 +11,7 @@ object ApplicationBuild extends Build {
     javaJdbc,
     "com.typesafe.slick" %% "slick" % "2.0.0",
     "org.slf4j" % "slf4j-nop" % "1.6.4",
+    "com.typesafe.play" %% "play-slick" % "0.6.0.1",
     "com.github.tototoshi" %% "scala-csv" % "1.0.0",
     "org.webjars" %% "webjars-play" % "2.2.1",
     "org.webjars" % "bootstrap" % "3.0.3",
