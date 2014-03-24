@@ -10,19 +10,15 @@ import scala.concurrent._
 object Portrait extends Controller {
   val MimeType = "image/jpg"
 
-  def portrait(id: Long) = Action.async {
-      val portraitPromise = Future(download(id, "http://www.kildarestreet.com/images/mpsL"))
-      portraitPromise.map(p => Ok(p).as(MimeType))
-    }
-
-  def smallPortrait(id: Long) = Action.async {
-    val portraitPromise = Future(download(id, "http://www.kildarestreet.com/images/mps"))
-    portraitPromise.map(p => Ok(p).as(MimeType))
-
+  def portrait(id: Long) = Action {
+    Ok.sendFile(
+        content = new java.io.File(f"public/images/portrait/$id.jpg"),
+        fileName = _ => id.toString
+    )
   }
 
   def download(id: Long, baseURL: String) = {
-    
+
     import java.net._
     import java.io._
 
@@ -37,22 +33,24 @@ object Portrait extends Controller {
         connection.setRequestMethod("GET")
         in = connection.getInputStream
         byteArray = Stream.continually(in.read).takeWhile(-1 !=).map(_.toByte).toArray
+        
+        
+
+        Cache.set(baseURL + id, byteArray)
 
       } catch {
         case e: Exception => Logger.warn(f"Can't find picture as $pictureType for id: $id", e)
       } finally {
         if (in != null) in.close
       }
-      
-      Cache.set(baseURL+id, byteArray)
+
       byteArray
 
     }
 
-    Cache.getAs[Array[Byte]](baseURL+id) match {
-      case Some(image:Array[Byte]) => image
+    Cache.getAs[Array[Byte]](baseURL + id) match {
+      case Some(image: Array[Byte]) => image
       case None => fetch(id, "jpg").getOrElse(fetch(id, "png").getOrElse { Logger.error(f"Can't find a picture for id: $id"); null })
-
     }
   }
 }

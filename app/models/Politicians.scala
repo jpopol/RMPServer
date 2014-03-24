@@ -11,14 +11,13 @@ class Politicians(tag: Tag) extends Table[Politician](tag,"Politician") {
   def lastname = column[String]("Lastname")
   def party = column[String]("Party")
   def constituency = column[String]("Constituency")
-  def url = column[String]("Url")
-  def * = (id, firstname, lastname, party, constituency, url) <> (Politician.tupled, Politician.unapply _)
+  def * = (id, firstname, lastname, party, constituency) <> (Politician.tupled, Politician.unapply _)
 
 }
 
-case class Politician (val id: Long, val firstname: String, val lastname: String, val party: String, val constituency:String, val url: String)
+case class Politician (val id: Long, val firstname: String, val lastname: String, val party: String, val constituency:String)
 
-object Politician extends ((Long, String, String, String, String, String) => Politician) {
+object Politician extends ((Long, String, String, String, String) => Politician) {
   implicit val politicianFmt = Json.format[Politician]
   Politician.tupled
 }

@@ -11,7 +11,6 @@ GET        /politicians/constituency/:constituency            controllers.Politi
 GET        /politicians/party/:party                          controllers.Politicians.showParty(party: String)
 
 GET        /portrait/:id                                      controllers.Portrait.portrait(id: Long)
-GET        /smallportrait/:id                                 controllers.Portrait.smallPortrait(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET        /assets/*file                                      controllers.Assets.at(path="/public", file)

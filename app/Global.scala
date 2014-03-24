@@ -1,11 +1,13 @@
 import com.github.tototoshi.csv.CSVReader
 import models.{Politician, Politicians}
 import play.api.{Mode, Play, GlobalSettings, Application}
+import play.api.db.slick._
+import play.api.db.slick.Config.driver.simple._
 import play.Logger
-import models.RmpDb._
+
 
 // Use H2Driver to connect to an H2 database
-import scala.slick.driver.H2Driver.simple._
+//import scala.slick.driver.H2Driver.simple._
 // Use the implicit threadLocalSession
 //import Database.threadLocalSession
 
@@ -17,7 +19,7 @@ object Global extends GlobalSettings {
   override def onStart(app: Application) {
     super.onStart(app)
 
-    database withSession {
+    DB withSession {
       implicit session:Session =>
         Logger.debug("Creating tables")
         //politicians.ddl.create
@@ -28,32 +30,30 @@ object Global extends GlobalSettings {
           CSVReader.open("/app/public/dail.csv")
         }
         Logger.debug("reader : " + reader.toString)
-        reader.allWithHeaders().foreach { m =>
-          if(app.mode != Mode.Test){
-        	  Logger.debug(m.toString)
+        try {
+          reader.allWithHeaders().foreach { m =>
+            if(app.mode != Mode.Test){
+              Logger.debug(m.toString)
+            }
+            //id,firstname,lastname,party,constituency,uri
+            politicians += Politician(m.get("id").getOrElse("0").toLong,
+              m.get("firstname").getOrElse(""),
+              m.get("lastname").getOrElse(""),
+              m.get("party").getOrElse(""),
+              m.get("constituency").getOrElse(""))
           }
-          //id,firstname,lastname,party,constituency,uri
-          politicians += Politician(m.get("id").getOrElse("0").toLong,
-            m.get("firstname").getOrElse(""),
-            m.get("lastname").getOrElse(""),
-            m.get("party").getOrElse(""),
-            m.get("constituency").getOrElse(""),
-            m.get("uri").getOrElse(""))
+        } catch {
+          case _ :Throwable => Logger.warn("Can't populate database")
         }
     }
   }
 
 
   override def onStop(app: Application): Unit = {
-
-    database withSession {
-      implicit session:Session =>
-        Logger.info("Shutting down the server")
-        Logger.debug("Dropping tables")
-        //politicians.ddl.drop
-    }
+    Logger.info("Shutting down the server")
     super.onStop(app)
   }
+
 
 
 

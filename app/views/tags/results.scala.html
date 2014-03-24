@@ -1,4 +1,4 @@
-@(politicians: Set[Politician], query: String)(implicit lang:Lang)
+@(politicians: List[Politician], query: String)(implicit lang:Lang)
 
 @main(Messages("results")+": " + query ){
     @for(politician <- politicians){

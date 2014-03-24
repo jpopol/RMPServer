@@ -100,12 +100,12 @@ dt {
 	clear: right;
 }
 
-.portrait {
+/*.portrait {
 	float: right;
 	margin-bottom: 5px;
     margin-top: 5px;
 	border: 4px solid white;
-}
+}*/
 
 .politician {
     border-top: 1px solid black;

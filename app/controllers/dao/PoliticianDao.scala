@@ -1,50 +1,36 @@
 package controllers.dao
 
+import play.api.Play.current
 import scala.slick.lifted.TableQuery
-import models.{Politician, Politicians}
-import models.RmpDb._
-import scala.slick.driver.H2Driver.simple._
-// Use the implicit threadLocalSession
-//import Database.threadLocalSession
+import models.{Politicians, Politician}
+import play.api.db.slick._
+import play.api.db.slick.Config.driver.simple._
+
 
 object PoliticianDao {
   private val politicianQuery: TableQuery[Politicians] = TableQuery[Politicians]
 
-  def list():Set[Politician] = {
-    database withSession { implicit session =>
-      ( for {
-          p <- politicianQuery
-      }yield(p)).run.toSet
-      //politicianQuery.list().run
+  def list():List[Politician] = {
+    DB withSession { implicit session =>
+      politicianQuery.list
     }
   }
 
-
-  def filterByConstituency(constituency: String):Set[Politician] = {
-    database withSession { implicit session =>
-      ( for {
-        p <- politicianQuery if p.constituency === constituency
-      }yield(p)).run.toSet
-      //politicianQuery.filter(_.constituency === constituency).run
+  def filterByConstituency(constituency: String):List[Politician] = {
+    DB withSession { implicit session =>
+      politicianQuery.filter(_.constituency === constituency).list
     }
   }
 
-
-  def filterByParty(party: String):Set[Politician] = {
-    database withSession { implicit session =>
-      ( for {
-        p<- politicianQuery if p.party === party
-      }yield(p)).run.toSet
-      //politicianQuery.filter(_.party === party).run
+  def filterByParty(party: String):List[Politician] = {
+    DB withSession { implicit session =>
+     politicianQuery.filter(_.party === party).list
     }
   }
 
-  def getById(id: Long):Set[Politician] = {
-    database withSession { implicit session =>
-      ( for {
-        p <- politicianQuery if p.id === id
-      }yield(p)).run.toSet
-      //politicianQuery.filter(_.id === id).run
+  def getById(id: Long):List[Politician] = {
+    DB withSession { implicit session =>
+     politicianQuery.filter(_.id === id).list
     }
   }
 

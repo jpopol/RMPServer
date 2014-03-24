@@ -19,7 +19,7 @@ object Politicians extends Controller {
   def showConstituency(constituency: String) = Action { implicit request =>
     val politicians = PoliticianDao.filterByConstituency(constituency)
     politicians match {
-      case p:Set[_] => if (p.isEmpty) NotFound else Ok(views.html.politicians.constituency(politicians))
+      case p:List[_] => if (p.isEmpty) NotFound else Ok(views.html.politicians.constituency(politicians))
       case _ => NotFound
     }
   }
@@ -27,7 +27,7 @@ object Politicians extends Controller {
   def showParty(party: String) = Action { implicit request =>
     val politicians = PoliticianDao.filterByParty(party)
     politicians match {
-      case p:Set[_] => if (p.isEmpty) NotFound else  Ok(views.html.politicians.party(politicians))
+      case p:List[_] => if (p.isEmpty) NotFound else  Ok(views.html.politicians.party(politicians))
     }
   }
 

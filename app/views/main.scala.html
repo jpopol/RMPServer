@@ -5,35 +5,48 @@
 <html>
     <head>
         <title>@title</title>
-        <link rel="stylesheet" media="screen" href="@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.css"))">
+        <link rel="stylesheet" media="screen" href="@routes.WebJarAssets.at(WebJarAssets.locate("css/foundation.css"))">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        <script src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.js"))' type="text/javascript"></script>
-        <script src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.js"))' type="text/javascript"></script>
+
     </head>
     <body>
-        <div class="navbar navbar-default" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a href="@routes.Application.index()" class="navbar-brand"> @Messages("application.name")</a>
-                </div>
-                <div class="collapse navbar-collapse">
-               
-	                    	<form class="navbar-form navbar-right" role="search">
-        						<div class="form-group">
-          							<input type="text" class="form-control" placeholder="Search">
-        						</div>
-        						<button type="submit" class="btn">
-        							<span class="glyphicon glyphicon-search"></span>
-								</button>
-      					
-                </div>
-            </div>
+
+        <div class="sticky">
+            <nav class="top-bar" data-topbar>
+                <ul class="title-area">
+                    <li class="name">
+                        <h1>
+                            <a href="@routes.Application.index()"> @Messages("application.name")</a>
+                        </h1>
+                    </li>
+                    <li class="toggle-topbar menu-icon">
+                        <a href="#">Menu</a>
+                    </li>
+                </ul>
+
+                <section class="top-bar-section">
+                        <!-- Right Nav Section -->
+                        @*<ul class="right">
+                        <li class="active"><a href="#">Right Nav Button Active</a></li>
+                        </ul>*@
+
+                        <!-- Left Nav Section -->
+                    @* <ul class="left">
+                    <li><a href="#">Left Nav Button</a></li>
+                    </ul>*@
+                </section>
+            </nav>
         </div>
 
         <div class="container">
             @content
             @debug()
-        </div>       
+        </div>
+
+        <script src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.js"))' type="text/javascript"></script>
+        <script src='@routes.WebJarAssets.at(WebJarAssets.locate("modernizr.js"))' type="text/javascript"></script>
+        <script src='@routes.WebJarAssets.at(WebJarAssets.locate("foundation.js"))' type="text/javascript"></script>
+        <script src='@routes.WebJarAssets.at(WebJarAssets.locate("foundation.topbar.js"))' type="text/javascript"></script>
     </body>
 </html>

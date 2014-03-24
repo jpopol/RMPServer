@@ -3,7 +3,7 @@
 
 # --- !Ups
 
-create table "Politician" ("ID" BIGINT NOT NULL PRIMARY KEY,"Firstname" VARCHAR NOT NULL,"Lastname" VARCHAR NOT NULL,"Party" VARCHAR NOT NULL,"Constituency" VARCHAR NOT NULL,"Url" VARCHAR NOT NULL);
+create table "Politician" ("ID" BIGINT NOT NULL PRIMARY KEY,"Firstname" VARCHAR NOT NULL,"Lastname" VARCHAR NOT NULL,"Party" VARCHAR NOT NULL,"Constituency" VARCHAR NOT NULL);
 
 # --- !Downs
 
