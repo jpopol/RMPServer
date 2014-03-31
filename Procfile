@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/rmpserver -Dhttp.port=${PORT} -DapplyEvolutions.default=true -DUSER=heroku
+web: target/universal/stage/bin/rmpserver -Dhttp.port=${PORT} -Dconfig.resource=production.conf -DapplyEvolutions.default=true -DUSER=heroku
