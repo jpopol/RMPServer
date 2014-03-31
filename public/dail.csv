@@ -1,4 +1,4 @@
-id,firstname,lastname,party,constituency,uri
+id,firstname,lastname,party,constituency,URI
 20,Caoimhghín,Ó Caoláin,Sinn Fein,Cavan-Monaghan,http://www.kildarestreet.com/td/caoimhghin_o_caolain/cavan-monaghan
 2,Éamon,Ó Cuív,Fianna Fail,Galway West,http://www.kildarestreet.com/td/eamon_o_cuiv/galway_west
 21,Seán,Ó Fearghaíl,Fianna Fail,Kildare South,http://www.kildarestreet.com/td/sean_o_fearghail/kildare_south
@@ -104,7 +104,6 @@ id,firstname,lastname,party,constituency,uri
 313,Charlie,McConalogue,Fianna Fail,Donegal North East,http://www.kildarestreet.com/td/charlie_mcconalogue/donegal_north_east
 317,Mary Lou,McDonald,Sinn Fein,Dublin Central,http://www.kildarestreet.com/td/mary_lou_mcdonald/dublin_central
 399,Helen,McEntee,Fine Gael,Meath East,http://www.kildarestreet.com/td/helen_mcentee/meath_east
-182,Nicky,McFadden,Fine Gael,Longford-Westmeath,http://www.kildarestreet.com/td/nicky_mcfadden/longford-westmeath
 183,Dinny,McGinley,Fine Gael,Donegal South West,http://www.kildarestreet.com/td/dinny_mcginley/donegal_south_west
 184,Finian,McGrath,Independent,Dublin North Central,http://www.kildarestreet.com/td/finian_mcgrath/dublin_north_central
 185,Mattie,McGrath,Independent,Tipperary South,http://www.kildarestreet.com/td/mattie_mcgrath/tipperary_south
@@ -126,7 +125,6 @@ id,firstname,lastname,party,constituency,uri
 207,Dan,Neville,Fine Gael,Limerick,http://www.kildarestreet.com/td/dan_neville/limerick
 334,Derek,Nolan,Labour,Galway West,http://www.kildarestreet.com/td/derek_nolan/galway_west
 209,Michael,Noonan,Fine Gael,Limerick City,http://www.kildarestreet.com/td/michael_noonan/limerick_city
-398,Patrick,Nulty,Independent,Dublin West,http://www.kildarestreet.com/td/patrick_nulty/dublin_west
 307,Jonathan,O'Brien,Sinn Fein,Cork North Central,http://www.kildarestreet.com/td/jonathan_o%27brien/cork_north_central
 214,Willie,O'Dea,Fianna Fail,Limerick City,http://www.kildarestreet.com/td/willie_o%27dea/limerick_city
 215,Kieran,O'Donnell,Fine Gael,Limerick City,http://www.kildarestreet.com/td/kieran_o%27donnell/limerick_city
