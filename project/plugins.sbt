@@ -9,3 +9,6 @@ addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.2.1")
 
 //WebJar resolver
 resolvers += "webjars" at "http://webjars.github.com/m2"
+
+//sass compiler
+addSbtPlugin("net.litola" % "play-sass" % "0.3.0")

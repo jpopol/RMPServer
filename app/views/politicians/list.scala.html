@@ -1,7 +1,7 @@
 @(politicians: List[Politician])(implicit lang:Lang)
 
     @main(Messages("application.name")){
-        <div class="politicians row">
+        <div class="row">
         @for((politician,idx) <- politicians.zipWithIndex){
 
             <div class="columns large-4 medium-6 small-12 panel">

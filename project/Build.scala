@@ -1,6 +1,8 @@
 import sbt._
 import sbt.Keys._
 import play.Project._
+import net.litola.SassPlugin
+
 
 object ApplicationBuild extends Build {
 
@@ -18,7 +20,9 @@ object ApplicationBuild extends Build {
     "org.webjars" % "foundation" % "5.1.1"
   )
 
-  val main = play.Project(appName, appVersion, appDependencies).settings(
+
+  //play.Project.playScalaSettings ++ SassPlugin.sassSettings
+  val main = play.Project(appName, appVersion, appDependencies).settings(SassPlugin.sassSettings:_*).settings(
     // Add your own project settings here
     //Sonatype repository
     resolvers += "Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
