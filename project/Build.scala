@@ -21,8 +21,8 @@ object ApplicationBuild extends Build {
   )
 
 
-  //play.Project.playScalaSettings ++ SassPlugin.sassSettings
-  val main = play.Project(appName, appVersion, appDependencies).settings(SassPlugin.sassSettings:_*).settings(
+  //.settings(SassPlugin.sassSettings:_*)
+  val main = play.Project(appName, appVersion, appDependencies).settings(
     // Add your own project settings here
     //Sonatype repository
     resolvers += "Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
