@@ -14,7 +14,7 @@ object Portrait extends Controller {
     Ok.sendFile(
         content = new java.io.File(f"public/images/portrait/$id.jpg"),
         fileName = _ => id.toString
-    )
+    ).as(MimeType)
   }
 
   def download(id: Long, baseURL: String) = {

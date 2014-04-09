@@ -4,7 +4,7 @@
         <div class="row">
         @for((politician,idx) <- politicians.zipWithIndex){
 
-            <div class="columns large-4 medium-6 small-12 panel">
+            <div class="columns large-4 medium-6 small-12 panel politician-panel">
                 <div class="columns large-4 medium-4 small-6 @if(idx%2==0){large-push-8 medium-push-8 small-push-6}">
                     <a href="@controllers.routes.Politicians.showPolitician(politician.id)">
                         <img class="small-portrait" alt="@politician.id" src="@routes.Portrait.portrait(politician.id)">

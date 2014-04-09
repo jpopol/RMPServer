@@ -111,20 +111,6 @@ dt {
     border-top: 1px solid black;
 }
 
-.shadow {
-    -moz-box-shadow:    inset 0 0 10px #000000;
-    -webkit-box-shadow: inset 0 0 10px #000000;
-    box-shadow:         inset 0 0 10px #000000;
-}
-
-.badge-red {
-    background-color: #ff0800;
-}
-
-.badge-yellow {
-    background-color: #ffda00;
-}
-
-.badge-green {
-    background-color: #34ff00;
+.politician-panel {
+	margin: 0.5em;
 }
