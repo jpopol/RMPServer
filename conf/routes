@@ -25,3 +25,4 @@ GET        /api/politicians/party/:party                      controllers.api.Po
 GET        /api/politician/:id                                controllers.api.Politicians.showPolitician(id: Long)
 GET        /api/politician/:id/rate                           controllers.api.Rates.getRates(id: Long)
 POST       /api/politician/:id/rate                           controllers.api.Rates.addRate(id: Long)
+GET        /api/politician/:id/rate/:rating					  controllers.api.Rates.rate(id: Long, rating: Int)

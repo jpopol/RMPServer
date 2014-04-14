@@ -26,7 +26,8 @@ object RateDao {
 
   def addRate(p:Politician, rate:Int) = {
     DB.withSession{ implicit session =>
-      rateQuery += Rate(None, System.currentTimeMillis(), rate, p.id)
+      val r = if(rate == 0) -1 else 1
+      rateQuery += Rate(None, System.currentTimeMillis(), r, p.id)
     }
   }
 }

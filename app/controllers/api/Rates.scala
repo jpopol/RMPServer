@@ -32,5 +32,11 @@ object Rates extends Controller {
     //partialRate.
     Ok("return id")
   }
+  
+  def rate(politicianId: Long, rate: Int) = Action { implicit request =>
+    val politician = PoliticianDao.getById(politicianId).head
+    RateDao.addRate(politician, rate)
+    Ok("rated")
+   }
 
 }
