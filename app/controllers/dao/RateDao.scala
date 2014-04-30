@@ -24,6 +24,11 @@ object RateDao {
     }
   }
 
+  def getScore(p:Politician):Int = {
+    DB.withSession { implicit session =>
+      rateQuery.map(_.rate).sum.run.get
+    }
+  }
   
   def addRate(p:Politician, rate:Int, time: Long) = {
     DB.withSession{ implicit session =>

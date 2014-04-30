@@ -43,7 +43,9 @@ object Rates extends Controller {
       val politician =  PoliticianDao.getById(rateInfo.politicianId).head
       RateDao.addRate(politician, rateInfo.rating, rateInfo.timestamp)
       Logger.debug(s"json: $rateInfo")
-      Ok(Json.obj("status" ->"OK", "message" -> ("Rate '"+rateInfo.rating+"' saved.") ))  
+      val lastScore = RateDao.getScore(politician)
+      Logger.debug(s"Last score for $politician : $lastScore")
+      Ok(Json.toJson(lastScore))  
     }
   )
     
