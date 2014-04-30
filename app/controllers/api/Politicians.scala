@@ -1,5 +1,6 @@
 package controllers.api
 
+import play.Logger
 import play.api.mvc.{Action, Controller}
 import play.api.libs.json._
 import controllers.dao.PoliticianDao
@@ -8,6 +9,7 @@ object Politicians extends Controller {
   val MimeType = "application/json"
 
   def list = Action { implicit request =>
+    Logger.debug("Loading shit and stuff");
     Ok(Json.toJson(PoliticianDao.list())).as(MimeType)
   }
 
